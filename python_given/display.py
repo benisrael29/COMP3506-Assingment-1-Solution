@@ -24,11 +24,11 @@ class DisplayRandom(DisplayRandomBase):
             pivot = array[0]
             for x in array:
                 if x.getTimeAsInt() < pivot.getTimeAsInt():
-                    less.append(x)
+                    less = less + [x]
                 elif x.getTimeAsInt() == pivot.getTimeAsInt():
-                    equal.append(x)
+                    equal = equal + [x]
                 elif x.getTimeAsInt() > pivot.getTimeAsInt():
-                    greater.append(x)
+                    greater = greater + [x]
             # Don't forget to return something!
             return self.quicksort(less) + equal + self.quicksort(greater)  # Just use the + operator to join lists
         # Note that you want equal ^^^^^ not pivot

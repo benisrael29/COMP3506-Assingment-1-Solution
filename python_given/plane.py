@@ -10,3 +10,7 @@ class Plane(PlaneBase):
 
     def getNumbers(self):
         return self.plane_number[3:7]
+
+    def getTimeAsInt(self):
+        time = self.time[:]
+        return int(time.replace(":",""))

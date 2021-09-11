@@ -6,6 +6,12 @@ class DisplayRandom(DisplayRandomBase):
     """
         Implement all the necessary methods here. Need to use self.data which stores the planes to create the sorted list. 
     """
+    def getdisplay(self, sortedArry):
+        display= ""
+        for x in sortedArry:
+            display.join(x.plane_number)
+            display.join("\n")
+        return display
 
     def quicksort(self,array):
         """Sort the array by using quicksort."""
@@ -30,15 +36,21 @@ class DisplayRandom(DisplayRandomBase):
             return array
 
     def sort(self):
-        self.data = self.quicksort(self.data)
-        #for x in self.data:
-         #   self.data[x] = self.data[x].plane_number
-        return self.data
+        sortedArray = self.quicksort(self.data)
+        return sortedArray
 
 class DisplayPartiallySorted(DisplayPartiallySortedBase):
     """
         Implement all the necessary methods here
     """
+
+    def getdisplay(self, sortedArry):
+        display= ""
+        for x in sortedArry:
+            display.join(x.plane_number)
+            display.join("\n")
+        return display
+
     def sort(self):
         #add two lists to be sorted
         unsortedplanes = self.schedule + self.extra_planes
@@ -52,9 +64,7 @@ class DisplayPartiallySorted(DisplayPartiallySortedBase):
                     unsortedplanes[k + 1] = unsortedplanes[k]
                     k -= 1
             unsortedplanes[k + 1] = key
-        
-        for x in unsortedplanes:
-            unsortedplanes[x] = unsortedplanes[x].plane_number
+
         return unsortedplanes
 
 
@@ -88,15 +98,13 @@ def test():
     normSort = DisplayRandom(randomList).sort()
 
     print("PartSort:")
-    for plane in partSort:
-        print (plane)
+    print(partSort)
 
     print("NormSort:")
-    for plane in normSort:
-        print (plane.plane_number)
+    print(normSort)
+   
 
 """
 if __name__ == "__main__":
     test()
-
     """

@@ -1,4 +1,3 @@
-from plane import Plane
 from display_base import DisplayRandomBase, DisplayPartiallySortedBase
 
 

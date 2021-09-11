@@ -91,8 +91,8 @@ def test():
     for plane in normSort:
         print (plane.plane_number)
 
-
+"""
 if __name__ == "__main__":
     test()
 
-    
+    """

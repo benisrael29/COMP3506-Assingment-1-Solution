@@ -5,6 +5,21 @@ class DisplayRandom(DisplayRandomBase):
     """
         Implement all the necessary methods here. Need to use self.data which stores the planes to create the sorted list. 
     """
+
+    def sort(self):
+
+        #traverse list
+        for i in range(1, len(self.data)):
+            key = self.data[i]
+            k = i-1
+
+            while k >= 0 and key > self.data[k]:
+                    self.data[k + 1] = self.data[k]
+                    k -= 1
+            self.data[k + 1] = key
+        return self.data
+
+
     def quick(self,array):
         """Sort the array by using quicksort."""
 
@@ -25,7 +40,7 @@ class DisplayRandom(DisplayRandomBase):
         else: 
             return array
 
-    def sort(self):
+    def sort1(self):
         queue = self.quick(self.data)
         return queue
 

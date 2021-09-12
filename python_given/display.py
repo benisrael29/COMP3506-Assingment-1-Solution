@@ -104,6 +104,7 @@ def test():
     print("NormSort:")
     print(normSort)
 
-
+"""
 if __name__ == "__main__":
     test()
+"""

@@ -28,10 +28,9 @@ class DisplayRandom(DisplayRandomBase):
                     equal = equal + [x]
                 elif x.getTimeAsInt() > pivot.getTimeAsInt():
                     greater = greater + [x]
-            # Don't forget to return something!
-            return self.quicksort(less) + equal + self.quicksort(greater)  # Just use the + operator to join lists
-        # Note that you want equal ^^^^^ not pivot
-        else:  # You need to handle the part at the end of the recursion - when you only have one element in your array, just return the array.
+            return self.quicksort(less) + equal + self.quicksort(greater)  
+
+        else: 
             return array
 
     def sort(self):
@@ -59,18 +58,19 @@ class DisplayPartiallySorted(DisplayPartiallySortedBase):
             key = unsortedplanes[i]
             k = i-1
 
-            while k >= 0 and key.getTimeAsInt() < unsortedplanes[k].getTimeAsInt():
+            while k >= 0 and key > unsortedplanes[k]:
                     unsortedplanes[k + 1] = unsortedplanes[k]
                     k -= 1
             unsortedplanes[k + 1] = key
         return unsortedplanes
 
-"""
+
 def test():
     unsorted = [
         "ABC1234,12:45",
         "QWE4321,13:35",
         "ASD2473,14:32",
+        "ABC1234,12:45",
         "PMG8241,14:55",
         "ANB9206,14:59",
         "MAO3333,15:12",
@@ -104,9 +104,6 @@ def test():
     print("NormSort:")
     print(normSort)
 
-"""
 
-"""
 if __name__ == "__main__":
     test()
-"""

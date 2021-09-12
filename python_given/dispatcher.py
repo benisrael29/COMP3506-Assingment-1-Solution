@@ -11,6 +11,7 @@ class Dispatcher(DispatcherBase):
         Initialize the data structure to store planes
         """
         # raise NotImplementedError('must be implemented by subclass')
+        self.queue = []
 
     def __len__(self):
         """
@@ -18,13 +19,13 @@ class Dispatcher(DispatcherBase):
 
         :return: the number of the planes in the system
         """
-        return 0
+        return len(self.queue)
 
     def is_empty(self):
         """
         Return True if there are no planes in the system
         """
-        return len(self) == 0
+        return len(self.queue) == 0
 
     def add_plane(self, plane_number: str, time: str):
         """
@@ -37,7 +38,13 @@ class Dispatcher(DispatcherBase):
                      Example: "9:24", "15:32"
         :return:
         """
-        return 
+        plane = Plane(plane_number,time)
+        
+        #traverse list
+        for i in range(0, len(self.queue)):
+            key = self.queue[i]
+            if plane > key:
+                self.queue = self.queue[:i] + [plane] + self.queue[i:]
 
     def allocate_landing_slot(self, current_time: str):
         """
@@ -52,6 +59,16 @@ class Dispatcher(DispatcherBase):
                             Example: "9:24", "15:32"
         :return: Plane number or None
         """
+        if (self.is_empty):
+            return None
+        
+        topPlane = self.queue[0]
+        current_timeasint = int(current_time.replace(":",""))
+
+        if (current_timeasint - topPlane.getTimeAsInt()) >= 0 & (current_timeasint - topPlane.getTimeAsInt()) <= 5:
+            self.queue= self.queue[1:]
+            return topPlane.plane_number 
+
         return None
 
     def emergency_landing(self, plane_number: str):
@@ -63,6 +80,12 @@ class Dispatcher(DispatcherBase):
                              Example: "ABC1236", "ENC3455"
         :return: Plane number or None
         """
+        i=0
+        for plane in self.queue:
+            i=i+1
+            if (plane.plane_number == plane_number):
+                del self.queue[i:i+1]
+                return plane.plane_number
         return None
 
     def is_present(self, plane_number: str):
@@ -73,5 +96,8 @@ class Dispatcher(DispatcherBase):
                              Example: "ABC1235", "ENC3454"
         :return: True/False
         """
-        return True
+        for plane in self.queue:
+            if (plane.plane_number == plane_number):
+                return True
+        return False
 

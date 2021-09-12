@@ -65,7 +65,7 @@ class DisplayPartiallySorted(DisplayPartiallySortedBase):
             unsortedplanes[k + 1] = key
         return unsortedplanes
 
-
+"""
 def test():
     unsorted = [
         "ABC1234,12:45",
@@ -103,7 +103,9 @@ def test():
 
     print("NormSort:")
     print(normSort)
-   
+
+"""
+
 """
 if __name__ == "__main__":
     test()

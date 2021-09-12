@@ -18,5 +18,9 @@ class Plane(PlaneBase):
     def __lt__(self, other):
         if self.getTimeAsInt()<other.getTimeAsInt():
             return False
+
+        if self.getTimeAsInt == other.getTimeAsInt():
+            return True
+            
         else:
             return True

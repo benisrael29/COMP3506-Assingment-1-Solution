@@ -9,12 +9,8 @@ def tests():
 
 
     print(dispatcher.queue)
-    print("Doing allocate landing test...")
-    print(dispatcher.allocate_landing_slot("05:41"))
+    print(dispatcher.allocate_landing_slot("12:11"))
     print(dispatcher.is_present("ABC1230"))
-
-
-    
 
 if __name__ == "__main__":
     tests()

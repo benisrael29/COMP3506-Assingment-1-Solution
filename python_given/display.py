@@ -5,14 +5,7 @@ class DisplayRandom(DisplayRandomBase):
     """
         Implement all the necessary methods here. Need to use self.data which stores the planes to create the sorted list. 
     """
-    def getdisplay(self, sortedArry):
-        display= ""
-        for x in sortedArry:
-            display.join(x.plane_number)
-            display.join("\n")
-        return display
-
-    def quicksort(self,array):
+    def quick(self,array):
         """Sort the array by using quicksort."""
 
         less = []
@@ -28,27 +21,18 @@ class DisplayRandom(DisplayRandomBase):
                     equal = equal + [x]
                 elif x.getTimeAsInt() > pivot.getTimeAsInt():
                     greater = greater + [x]
-            return self.quicksort(less) + equal + self.quicksort(greater)  
-
+            return self.quick(less) + equal + self.quick(greater)  
         else: 
             return array
 
     def sort(self):
-        sortedArray = self.quicksort(self.data)
-        return self.quicksort(self.data)
+        queue = self.quick(self.data)
+        return queue
 
 class DisplayPartiallySorted(DisplayPartiallySortedBase):
     """
         Implement all the necessary methods here
     """
-
-    def getdisplay(self, sortedArry):
-        display= ""
-        for x in sortedArry:
-            display.join(x.plane_number)
-            display.join("\n")
-        return display
-
     def sort(self):
         #add two lists to be sorted
         unsortedplanes = self.schedule + self.extra_planes
@@ -63,48 +47,3 @@ class DisplayPartiallySorted(DisplayPartiallySortedBase):
                     k -= 1
             unsortedplanes[k + 1] = key
         return unsortedplanes
-
-
-def test():
-    unsorted = [
-        "ABC1234,12:45",
-        "QWE4321,13:35",
-        "ASD2473,14:32",
-        "ABC1234,12:45",
-        "PMG8241,14:55",
-        "ANB9206,14:59",
-        "MAO3333,15:12",
-        "QSA1420,15:15",
-        "AXX0023,15:55",
-        "QWL0531,23:45"]
-
-    randomList = [
-        "ASF6386,23:59",
-        "ABC1234,12:45",
-        "DWG4314,05:12",
-        "QWE4321,13:35",
-        "QQQ7299,08:01"
-        ]
-        
-    extra = [
-        "ASF6386,23:59",
-        "AAA4314,05:12",
-        "XXX4321,13:36"
-    ]
-
-    partSort = DisplayPartiallySorted (unsorted,extra).sort()
-    normSort = DisplayRandom(randomList).sort()
-
-    print("PartSort:")
-    print(partSort)
-    print(type(partSort))
-    for plane in partSort:
-        print(type(plane))
-
-    print("NormSort:")
-    print(normSort)
-
-"""
-if __name__ == "__main__":
-    test()
-"""

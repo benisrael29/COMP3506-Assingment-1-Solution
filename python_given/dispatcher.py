@@ -39,20 +39,16 @@ class Dispatcher(DispatcherBase):
         :return:
         """
         plane = Plane(plane_number,time)
-        self.queue = self.queue +[plane]
 
+        if(self.is_empty()):
+            self.queue =[plane]
 
-    """  
-    if (len(self.queue) == 0):
-            self.queue = [plane]
-            return
-
-        for i in range(0, len(self.queue)):
-            key = self.queue[i]
-            if plane > key:
-                self.queue = self.queue[:i] + [plane] + self.queue[i:]
-                
-        """
+        else: 
+            for i in range(0,len(self.queue)):
+                if self.queue[i]<plane:
+                    index = i
+                    break
+            self.queue = self.queue[:i] +[plane] + self.queue[i:]
 
 
     def allocate_landing_slot(self, current_time: str):
@@ -109,26 +105,6 @@ class Dispatcher(DispatcherBase):
             if (plane.plane_number == plane_number):
                 return True
         return False
-
-
-def tests():
-    dispatcher = Dispatcher()
-    dispatcher.add_plane("EAA1110","15:43")
-    dispatcher.add_plane("ANC3480","12:12")
-    dispatcher.add_plane("ABC1230","05:42")
-    dispatcher.add_plane("AAC3480","18:43")
-
-
-    print(dispatcher.queue)
-    print(dispatcher.allocate_landing_slot("05:41"))
-    print(dispatcher.is_present("ABC1230"))
-
-
-    
-
-if __name__ == "__main__":
-    tests()
-
 
 
 

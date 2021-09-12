@@ -25,7 +25,7 @@ class Dispatcher(DispatcherBase):
         """
         Return True if there are no planes in the system
         """
-        return len(self.queue) == 0
+        return (len(self.queue) == 0)
 
     def add_plane(self, plane_number: str, time: str):
         """
@@ -59,19 +59,21 @@ class Dispatcher(DispatcherBase):
         Otherwise return None
 
         The complexity must be O(1)
-
+ 
         :param current_time:string, represents the current time in 24h format.
                             Example: "9:24", "15:32"
         :return: Plane number or None
         """
-        if (self.is_empty):
+
+
+        if (self.is_empty()):
             return None
         
         topPlane = self.queue[0]
         current_timeasint = int(current_time.replace(":",""))
-
-        if (current_timeasint - topPlane.getTimeAsInt()) >= 0 & (current_timeasint - topPlane.getTimeAsInt()) <= 5:
-            self.queue= self.queue[1:]
+        
+        if(topPlane.getTimeAsInt() - current_timeasint) <= 5:
+            self.queue = self.queue[1:]
             return topPlane.plane_number 
 
         return None

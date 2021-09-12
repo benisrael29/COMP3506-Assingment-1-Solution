@@ -60,16 +60,16 @@ class Dispatcher(DispatcherBase):
         :return: Plane number or None
         """
         if (self.is_empty):
-            return None
+            return "None"
         
         topPlane = self.queue[0]
         current_timeasint = int(current_time.replace(":",""))
 
         if (current_timeasint - topPlane.getTimeAsInt()) >= 0 & (current_timeasint - topPlane.getTimeAsInt()) <= 5:
             self.queue= self.queue[1:]
-            return None # topPlane.plane_number 
+            return "None" # topPlane.plane_number 
 
-        return None
+        return "None"
 
     def emergency_landing(self, plane_number: str):
         """

@@ -39,8 +39,11 @@ class Dispatcher(DispatcherBase):
         :return:
         """
         plane = Plane(plane_number,time)
+        self.queue = self.queue +[plane]
 
-        if (len(self.queue) == 0):
+
+    """  
+    if (len(self.queue) == 0):
             self.queue = [plane]
             return
 
@@ -48,6 +51,8 @@ class Dispatcher(DispatcherBase):
             key = self.queue[i]
             if plane > key:
                 self.queue = self.queue[:i] + [plane] + self.queue[i:]
+                
+        """
 
 
     def allocate_landing_slot(self, current_time: str):

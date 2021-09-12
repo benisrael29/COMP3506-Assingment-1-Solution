@@ -14,3 +14,9 @@ class Plane(PlaneBase):
     def getTimeAsInt(self):
         time = self.time[:]
         return int(time.replace(":",""))
+
+    def __lt__(self, other):
+        if self.getTimeAsInt()<other.getTimeAsInt():
+            return False
+        else:
+            return True

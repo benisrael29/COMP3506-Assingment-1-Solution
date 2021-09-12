@@ -67,7 +67,7 @@ class Dispatcher(DispatcherBase):
 
         if (current_timeasint - topPlane.getTimeAsInt()) >= 0 & (current_timeasint - topPlane.getTimeAsInt()) <= 5:
             self.queue= self.queue[1:]
-            return topPlane.plane_number 
+            return None # topPlane.plane_number 
 
         return None
 

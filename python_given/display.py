@@ -36,7 +36,6 @@ class DisplayRandom(DisplayRandomBase):
 
     def sort(self):
         sortedArray = self.quicksort(self.data)
-        print(sortedArray)
         return self.quicksort(self.data)
 
 class DisplayPartiallySorted(DisplayPartiallySortedBase):
@@ -64,7 +63,6 @@ class DisplayPartiallySorted(DisplayPartiallySortedBase):
                     unsortedplanes[k + 1] = unsortedplanes[k]
                     k -= 1
             unsortedplanes[k + 1] = key
-        print(unsortedplanes)
         return unsortedplanes
 
 

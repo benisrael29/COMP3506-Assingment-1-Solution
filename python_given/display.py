@@ -6,7 +6,7 @@ class DisplayRandom(DisplayRandomBase):
         Implement all the necessary methods here. Need to use self.data which stores the planes to create the sorted list. 
     """
 
-    def sort(self):
+    def sort1(self):
 
         #traverse list
         for i in range(1, len(self.data)):
@@ -40,19 +40,21 @@ class DisplayRandom(DisplayRandomBase):
         else: 
             return array
 
-    def sort1(self):
+    def sort(self):
         queue = self.quick(self.data)
         return queue
 
 class DisplayPartiallySorted(DisplayPartiallySortedBase):
     """
-        Implement all the necessary methods here
+        Partial sort method, combines seld.schedule and self.extra_planes 
+        and sorts the resulting list.
+
+        return: sorted arrray of planes
     """
     def sort(self):
-        #add two lists to be sorted
-        unsortedplanes = self.schedule + self.extra_planes
 
-        #traverse list
+        unsortedplanes = self.schedule + self.extra_planes
+        
         for i in range(1, len(unsortedplanes)):
             key = unsortedplanes[i]
             k = i-1

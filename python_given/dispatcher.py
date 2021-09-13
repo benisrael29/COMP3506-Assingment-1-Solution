@@ -65,7 +65,6 @@ class Dispatcher(DispatcherBase):
         :return: Plane number or None
         """
 
-
         if (self.is_empty()):
             return None
         
